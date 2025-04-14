@@ -23,6 +23,7 @@ dnf download graphite2
 dnf download libbrotli
 dnf download libpng
 dnf download fontconfig
+dnf download openssl
 
 # pixbuf need mime database
 # https://www.linuxtopia.org/online_books/linux_desktop_guides/gnome_2.14_admin_guide/mimetypes-database.html
