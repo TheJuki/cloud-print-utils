@@ -23,7 +23,8 @@ dnf download graphite2
 dnf download libbrotli
 dnf download libpng
 dnf download fontconfig
-dnf download openssl-libs
+
+dnf install -y openssl
 
 # pixbuf need mime database
 # https://www.linuxtopia.org/online_books/linux_desktop_guides/gnome_2.14_admin_guide/mimetypes-database.html
@@ -36,6 +37,9 @@ cp -P -r /tmp/*/usr/lib64/* /opt/lib
 for f in $(find /tmp  -type f  -name 'lib*.so*'); do 
   cp "$f" /opt/lib/$(python -c "import re; print(re.match(r'^(.*.so.\d+).*$', '$(basename $f)').groups()[0])"); 
 done
+
+cp /usr/bin/openssl /opt/lib/openssl
+
 # pixbuf need list loaders cache
 # https://developer.gnome.org/gdk-pixbuf/stable/gdk-pixbuf-query-loaders.html
 PIXBUF_BIN=$(find /tmp -name gdk-pixbuf-query-loaders-64)
